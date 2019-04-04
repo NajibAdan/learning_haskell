@@ -32,6 +32,7 @@ myIntersperse sep xs
             | null(xs) = []
             | null(tail xs) = head xs
             | otherwise = (head xs) ++ [sep] ++ myIntersperse sep (tail xs)
+            
 -- shows the lenght of a binary tree
 lenTree :: Tree a -> Int
 lenTree x = case x of
