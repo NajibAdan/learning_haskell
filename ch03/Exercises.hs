@@ -38,3 +38,10 @@ lenTree :: Tree a -> Int
 lenTree x = case x of
 Empty -> 0
 Node x y z -> 1 + (lenTree y) + (lenTree z)
+
+-- Consider three two-dimensional points a, b, and c. 
+-- If we look at the angle formed by the line segment from a to b and 
+-- the line segment from b to c, it either turns left, turns right, or 
+-- forms a straight line. 
+-- Define a Direction data type that lets you represent these possibilities
+data Turn = LeftTurn | RightTurn | Straight deriving (Show)
