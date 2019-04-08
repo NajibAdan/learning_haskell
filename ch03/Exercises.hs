@@ -44,4 +44,15 @@ Node x y z -> 1 + (lenTree y) + (lenTree z)
 -- the line segment from b to c, it either turns left, turns right, or 
 -- forms a straight line. 
 -- Define a Direction data type that lets you represent these possibilities
-data Turn = LeftTurn | RightTurn | Straight deriving (Show)
+
+data Direction = DLeft | DRight | DStraight deriving (Show)
+data Point2D = Point2D Double Double deriving (Eq, Show)
+
+calcDirection :: Point2D -> Point2D -> Point2D -> Direction
+calcDirection (Point2D px1 py1) (Point2D px2 py2) (Point2D px3 py3)
+              | la+ua > hrad = DRight
+              | la+ua < hrad = DLeft
+              | otherwise = DStraight
+                  where la = atan ((py2-py1)/(px2-px1)) --lower angle
+                  ua = atan ((px3-px2)/(py3-py2)) --upper angle
+                  hrad = 0.5*pi
